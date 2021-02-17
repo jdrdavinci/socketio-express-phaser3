@@ -9,14 +9,14 @@ var io = socketIO(server, {
   pingTimeout: 60000,
 })
 
-app.set('port', 5000)
+app.set('port', process.env.PORT || 5000)
 app.use('/static', express.static(__dirname + '/static'))
 
 app.get('/', function (request, response) {
   response.sendFile(path.join(__dirname, 'index.html'))
 })
 
-server.listen(5000, function () {
+server.listen(process.env.PORT || 5000, function () {
   console.log('Starting server on port 5000')
 })
 
